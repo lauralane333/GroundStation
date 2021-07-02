@@ -1,21 +1,21 @@
 package model;
 
 public class Data {
-    private String time;
+    private long time;
     private double pressure, temperature, altitude;
 
-    public Data(String time, double pressure, double temperature, double altitude) {
+    public Data(long time, double pressure, double temperature, double altitude) {
         this.time = time;
         this.pressure = pressure;
         this.temperature = temperature;
         this.altitude = altitude;
     }
 
-    public String getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(long time) {
         this.time = time;
     }
 

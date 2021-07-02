@@ -24,7 +24,7 @@ public class DataController {
 
             while(scanner.hasNext()){
                 String[] pos = scanner.nextLine().split(",");
-                data = new Data(pos[0],Double.parseDouble(pos[1]),Double.parseDouble(pos[2]),Double.parseDouble(pos[3]));
+                data = new Data(Long.parseLong(pos[0]),Double.parseDouble(pos[1]),Double.parseDouble(pos[2]),Double.parseDouble(pos[3]));
                 datas.add(data);
             }
 

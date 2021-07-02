@@ -2,7 +2,6 @@ package view;
 
 import controller.DataController;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,10 +14,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.Data;
-
-import java.io.FileReader;
-import java.util.Scanner;
 
 
 public class Home {
@@ -31,10 +26,6 @@ public class Home {
 
     public Home() {
         dataController = new DataController();
-        /*FileReader fileReader = new FileReader("./data/data.txt");
-        Scanner scanner = new Scanner(fileReader);
-        String[] pos = scanner.nextLine().split(",");
-        Data data = new Data(pos[0], Double.parseDouble(pos[1]), Double.parseDouble(pos[2]), Double.parseDouble(pos[3]));*/
 
 
         //defining the axes
@@ -47,9 +38,10 @@ public class Home {
         //defining a series
         XYChart.Series series = new XYChart.Series();
         //populating the series with data
-        for (int i = 0; i < 10; i++) {
-            series.getData().add(new XYChart.Data(i, i * i));
+        for (int i = 0; i < dataController.read().size(); i++) {
+            series.getData().add(new XYChart.Data(dataController.read().get(i).getTime(), dataController.read().get(i).getPressure()));
         }
+
         pressureChart.getData().add(series);
 
         //defining the axes
@@ -62,8 +54,8 @@ public class Home {
         //defining a series
         XYChart.Series series2 = new XYChart.Series();
         //populating the series with data
-        for (int i = 0; i < 10; i++) {
-            series2.getData().add(new XYChart.Data(i, i));
+        for (int i = 0; i < dataController.read().size(); i++) {
+            series2.getData().add(new XYChart.Data(dataController.read().get(i).getTime(), dataController.read().get(i).getAltitude()));
         }
 
         altitudeChart.getData().add(series2);
@@ -78,8 +70,8 @@ public class Home {
         //defining a series
         XYChart.Series series3 = new XYChart.Series();
         //populating the series with data
-        for (int i = 0; i < 10; i++) {
-            series3.getData().add(new XYChart.Data(i, i));
+        for (int i = 0; i < dataController.read().size(); i++) {
+            series3.getData().add(new XYChart.Data(dataController.read().get(i).getTime(), dataController.read().get(i).getTemperature()));
         }
 
         temperatureChart.getData().add(series3);
