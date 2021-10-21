@@ -27,7 +27,7 @@ public class GroundStation extends Application{
         stage.getIcons().add(new Image(new FileInputStream("./img/logo.JPG")));
         Home home = new Home();
         stage.setScene(home.getScene());
-        stage.show();
+        stage.hubhubshow();
     }
 
     public static void main(String[] args) {
